@@ -1,16 +1,16 @@
 <template>
-  <loading :loading="loading">
-    <router-view />
-  </loading>
+  <router-view />
+  <!-- <loading :loading="loading">
+  </loading>-->
 </template>
 
 <script>
-import {Loading} from '_c'
+// import {Loading} from '_c'
 import {mapState} from 'vuex'
 export default  {
   name: 'app',
   components: {
-    Loading
+    // Loading
   },
   data() {
     return {

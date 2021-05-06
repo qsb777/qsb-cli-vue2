@@ -1,4 +1,3 @@
-import Vue from "vue";
 import {
   Button,
   Spin,
@@ -11,6 +10,4 @@ import {
 
 const compList = [Button, Spin, Input, Checkbox, message, Menu, Layout];
 
-compList.forEach((comp) => {
-  Vue.use(comp);
-});
+export default compList;

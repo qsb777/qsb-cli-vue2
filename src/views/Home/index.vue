@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import http from '@/api'
+// import http from '@/api'
 export default {
   name:'home',
   data() {
