@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "ag-grid-community": "^25.2.1",
     "ag-grid-enterprise": "^25.2.1",
     "ag-grid-vue": "^25.2.0",
     "ant-design-vue": "^1.7.4",

@@ -7,6 +7,11 @@ import plugins from "./plugins";
 // import components from "_c";
 import "ant-design-vue/dist/antd.css";
 
+import { LicenseManager } from "ag-grid-enterprise";
+LicenseManager.setLicenseKey(
+  "xx@wumis.com_NDEwMjMyOTYwMDAwMA==139dd80c7bc5ab0e7f3bbbb9d92103a8"
+);
+
 Vue.prototype.$http = http;
 
 Vue.use(plugins);

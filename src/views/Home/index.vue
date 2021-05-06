@@ -1,6 +1,6 @@
 <template>
   <div class="home" @click="clickHander">
-    <a-button>首页</a-button>
+    <ag-grid style="height: 100%;" :tableData="tableData" :columns="columnDefs"></ag-grid>
   </div>
 </template>
 
@@ -9,11 +9,21 @@
 export default {
   name:'home',
   data() {
-    return {}
+    return {
+      tableData: [],
+      columnDefs: [
+        {type: 'seq'},
+        { field: 'make' },
+        { field: 'model' },
+        { field: 'price', sortable: true }
+        ]
+    }
   },
     methods: {
       clickHander() {
-        
+        fetch('https://www.ag-grid.com/example-assets/small-row-data.json')
+                .then(result => result.json())
+                .then(rowData => this.tableData = rowData);
       }
     }
 }
