@@ -28,7 +28,7 @@
 <script>
 import { AgGridVue } from "ag-grid-vue";
 import AG_GRID_LOCALE_ZZZ from './locale.en'
-import { Seq } from "./components";
+import { seq,erpInput } from "./components";
 
 // const seq = Vue.extend({
 //   template: '<span>{{ valueCubed() }}</span>',
@@ -42,14 +42,6 @@ export default {
   name: 'agGrid',
   components: {
     AgGridVue,
-    // CubeComponent: {
-    //       template: '<span>{{ valueCubed() }}</span>',
-    //       methods: {
-    //           valueCubed() {
-    //               return this.params.value * this.params.value * this.params.value;
-    //           }
-    //       }
-    //   }
   },
   props: {
     tableData: {
@@ -91,27 +83,33 @@ export default {
       this.gridApi = params.api
       this.columnApi = params.columnApi
     },
+    changeValue() {},
     initColumns (data) {
       let columns= []
       data.forEach(item => {
         if(item.type && item.type === 'seq') {
-          columns.push({headerName: "No",cellRenderer: 'Seq', })
+          columns.push({headerName: "No",cellRenderer: 'seq', width: 80, })
+        } else if ('editRender' in item) {
+          let {name } = item.editRender
+          delete item.editRender
+          console.log(name)
+          columns.push({...item, cellEditor: name, editable: true, cellEditorParams: {change1111111: this.changeValue}})
         } else {
           columns.push(item)
         }
 
        
       })
-          console.log(columns)
-      this.columnDefs = columns
+      return columns
     },
     initAgGrid () {
-      // console.log(Seq)
+      this.gridOptions={}
       this.rowData = []
-     this.columnDefs = this.initColumns(this.columns)
-        this.frameworkComponents = {
-      Seq: Seq,
-    };
+      this.columnDefs = this.initColumns(this.columns)
+      this.frameworkComponents = {
+        seq: seq,
+        erpInput: erpInput
+      };
     }
   },
   mounted() { },

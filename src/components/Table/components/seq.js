@@ -1,9 +1,16 @@
-export default {
-  template: "<span>{{ vueChange() }}</span>",
-  methods: {
-    vueChange(...aaa) {
-      console.log(aaa, this.params);
-      return 123;
-    },
+// 序号组件
+import Vue from "vue";
+export default Vue.extend({
+  name: "seq",
+  data() {
+    return {
+      displayValue: "",
+    };
   },
-};
+  beforeMount() {
+    this.displayValue = this.params.node.rowIndex + 1;
+  },
+  render() {
+    return <span>{this.displayValue}</span>;
+  },
+});

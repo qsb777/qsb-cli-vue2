@@ -1,3 +1,4 @@
-import Seq from "./seq";
+import seq from "./seq";
+import erpInput from "./erpInput";
 
-export { Seq };
+export { seq, erpInput };

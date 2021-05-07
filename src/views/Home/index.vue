@@ -14,7 +14,7 @@ export default {
       columnDefs: [
         {type: 'seq'},
         { field: 'make' },
-        { field: 'model' },
+        { field: 'model', editRender: {name: 'erpInput'} },
         { field: 'price', sortable: true }
         ]
     }
